@@ -1,5 +1,6 @@
 ﻿using Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Data
 {
@@ -78,7 +79,9 @@ namespace Data
         /// <param name="optionsBuilder">optionsBuilder</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(local); Database=NotifyDb; User ID=sa; Password=sqlpass;");
+            IConfiguration configuration = Configuration.GetConfigurationRootByJson("config.json");
+            optionsBuilder.UseSqlServer(configuration["ConnectionString"]);
+            //optionsBuilder.UseSqlServer("Data Source=(local); Database=NotifyDb; User ID=sa; Password=sqlpass;");
         }
     }
 }

@@ -1,0 +1,3 @@
+{
+  "ConnectionString": "Data Source=(local); Database=NotifyDb; User ID=sa; Password=sqlpass;"
+}
