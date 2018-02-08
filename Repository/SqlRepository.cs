@@ -92,6 +92,17 @@ namespace Repository
         }
 
         /// <summary>
+        /// LoadEntitie
+        /// </summary>
+        /// <typeparam name="T">T</typeparam>
+        /// <param name="wherelambda">wherelambda</param>
+        /// <returns>T</returns>
+        public override T LoadEntitie<T>(Func<T, bool> wherelambda)
+        {
+            return this.dbContext.Set<T>().FirstOrDefault(wherelambda);
+        }
+
+        /// <summary>
         /// The load entities m.
         /// </summary>
         /// <param name="wherelambda">
@@ -102,7 +113,7 @@ namespace Repository
         /// <returns>
         /// The <see cref="IQueryable"/>.
         /// </returns>
-        public override IQueryable<T> LoadEntitiesM<T>(Func<T, bool> wherelambda)
+        public override IQueryable<T> LoadEntities<T>(Func<T, bool> wherelambda)
         {
             return this.dbContext.Set<T>().Where<T>(wherelambda).AsQueryable();
         }

@@ -71,6 +71,14 @@ namespace Repository
         public abstract void DeleteEntities<T>(T entity, bool isSubmit = false) where T : class;
 
         /// <summary>
+        /// LoadEntitie
+        /// </summary>
+        /// <typeparam name="T">T</typeparam>
+        /// <param name="wherelambda">wherelambda</param>
+        /// <returns>T</returns>
+        public abstract T LoadEntitie<T>(Func<T, bool> wherelambda) where T : class;
+
+        /// <summary>
         /// The load entities m.
         /// </summary>
         /// <param name="wherelambda">
@@ -81,7 +89,7 @@ namespace Repository
         /// <returns>
         /// The <see cref="IQueryable"/>.
         /// </returns>
-        public abstract IQueryable<T> LoadEntitiesM<T>(Func<T, bool> wherelambda) where T : class;
+        public abstract IQueryable<T> LoadEntities<T>(Func<T, bool> wherelambda) where T : class;
 
         /// <summary>
         /// The load pager entities.
@@ -118,6 +126,19 @@ namespace Repository
             Func<T, bool> whereLambda,
             bool isAsc,
             Func<T, TSource> orderByLambda) where T : class;
+
+        //public virtual void Log()
+        //{
+        //    this.dbContext.Database.Log = (sql) =>
+        //    {
+        //        if (string.IsNullOrEmpty(sql) == false)
+        //        {
+        //            Console.WriteLine("************sql执行*************");
+        //            Console.WriteLine(sql);
+        //            Console.WriteLine("************sql结束************");
+        //        }
+        //    };
+        //}
 
         /// <summary>
         /// 释放资源
