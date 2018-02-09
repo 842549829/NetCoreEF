@@ -1,7 +1,5 @@
 ﻿using System.Transactions;
-using Data;
 using Domain;
-using Microsoft.EntityFrameworkCore;
 using Repository;
 
 namespace Service
@@ -17,7 +15,7 @@ namespace Service
         /// <param name="employees">员工</param>
         public static void AddEmployees(Employees employees)
         {
-            using (BaseRepository repository = Factory())
+            using (BaseRepository repository = Factory.BaseRepositoryFactory())
             {
                 repository.AddEntities(employees, true);
             }
@@ -30,7 +28,7 @@ namespace Service
         /// <param name="employees">员工信息</param>
         public static void AddCompany(Company company, Employees employees)
         {
-            using (BaseRepository repository = Factory())
+            using (BaseRepository repository = Factory.BaseRepositoryFactory())
             {
                 using (TransactionScope trans = new TransactionScope())
                 {
@@ -38,29 +36,6 @@ namespace Service
                     repository.AddEntities(employees);
                     trans.Complete();
                 }
-            }
-        }
-
-        /// <summary>
-        /// 工厂方法
-        /// </summary>
-        /// <returns>数据仓储</returns>
-        public static BaseRepository Factory()
-        {
-            DbContext dbContext = new NotifyEntities();
-            BaseRepository repository = new SqlRepository(dbContext);
-            return repository;
-        }
-
-        /// <summary>
-        /// 生成数据库和表结构
-        /// </summary>
-        /// <returns>结果</returns>
-        public static bool EnsureCreated()
-        {
-            using (BaseRepository repository = Factory())
-            {
-                return repository.EnsureCreated();
             }
         }
     }

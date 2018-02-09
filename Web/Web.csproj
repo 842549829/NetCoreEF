@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\js\views\" />
+    <Folder Include="wwwroot\js\widget\" />
+    <Folder Include="Views\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Code\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -13,6 +18,12 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -19,5 +19,17 @@ namespace Service
             BaseRepository repository = new SqlRepository(dbContext);
             return repository;
         }
+
+        /// <summary>
+        /// 生成数据库和表结构
+        /// </summary>
+        /// <returns>结果</returns>
+        public static bool EnsureCreated()
+        {
+            using (BaseRepository repository = BaseRepositoryFactory())
+            {
+                return repository.EnsureCreated();
+            }
+        }
     }
 }

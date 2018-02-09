@@ -10,7 +10,7 @@ namespace ConsoleApp
         {
 
             // 初始化数据库结构和表结构
-            UserService.EnsureCreated();
+            Factory.EnsureCreated();
            
             // 测试添加员工
             //UserService.AddEmployees(new Employees
