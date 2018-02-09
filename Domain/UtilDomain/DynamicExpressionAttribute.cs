@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.UIDomain
+namespace Domain.UtilDomain
 {
     /// <summary>
     /// 动态表达式

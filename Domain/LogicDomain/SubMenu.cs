@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Domain.DbDomain;
 
-namespace LogicDomain.Domain
+namespace Domain
 {
     /// <summary>
     /// 菜单子集
