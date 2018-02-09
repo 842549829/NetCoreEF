@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Model
+namespace Domain.UIDomain
 {
     /// <summary>
     /// 角色查询条件

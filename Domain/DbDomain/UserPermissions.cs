@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Domain
+namespace Domain.DbDomain
 {
     /// <summary>
-    /// 角色菜单关系
+    /// 用户角色关系
     /// </summary>
-    public class RolePermissions
+    public class UserPermissions
     {
         /// <summary>
         /// 角色Id
@@ -13,8 +13,8 @@ namespace Domain
         public Guid RoleId { get; set; }
 
         /// <summary>
-        /// 菜单Id
+        /// 用户Id
         /// </summary>
-        public Guid MenuId { get; set; }
+        public Guid UserId { get; set; }
     }
 }

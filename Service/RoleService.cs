@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Domain;
-using Domain.Model;
+using Domain.DbDomain;
+using Domain.UIDomain;
+using Domain.UtilDomain;
 using Repository;
 
 namespace Service

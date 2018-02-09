@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain
+namespace Domain.DbDomain
 {
     /// <summary>
     /// 基础类

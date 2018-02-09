@@ -1,4 +1,6 @@
 ﻿using Domain;
+using Domain.DbDomain;
+using Domain.UtilDomain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

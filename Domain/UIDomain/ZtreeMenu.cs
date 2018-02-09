@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace Domain
+namespace Domain.UIDomain
 {
     public class ZtreeMenu
     {
@@ -15,17 +12,20 @@ namespace Domain
 
         /// <summary>
         /// 菜单名称
-        /// </summary>
-        public string name { get; set; }
+        /// </summary
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
 
         /// <summary>
         /// 菜单父Id
         /// </summary>
-        public string pId { get; set; }
+        [JsonProperty(PropertyName = "pId")]
+        public string Pid { get; set; }
 
         /// <summary>
         /// 是否打开
         /// </summary>
-        public bool open { get; set; } = true;
+        [JsonProperty(PropertyName = "open")]
+        public bool Open { get; set; } = true;
     }
 }

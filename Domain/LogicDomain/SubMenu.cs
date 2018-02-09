@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Domain.DbDomain;
 
-namespace Domain
+namespace LogicDomain.Domain
 {
     /// <summary>
     /// 菜单子集

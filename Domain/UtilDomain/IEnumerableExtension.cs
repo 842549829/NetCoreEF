@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
-using Domain.Model;
+using Domain.UIDomain;
 
-namespace Domain
+namespace Domain.UtilDomain
 {
     /// <summary>
     /// linq扩展

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Domain
+namespace Domain.UtilDomain
 {
     /// <summary>
     /// 获取实体对象的自定义特性

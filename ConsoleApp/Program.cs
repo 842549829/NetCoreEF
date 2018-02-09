@@ -1,5 +1,7 @@
 ﻿using System;
 using Domain;
+using Domain.DbDomain;
+using Domain.UIDomain;
 using Service;
 
 namespace ConsoleApp
@@ -54,7 +56,7 @@ namespace ConsoleApp
             RoleService.RemoveRole(role);
 
             // 测试分页
-            var data = RoleService.QueryRolesByPagings(new Domain.Model.RoleCondition
+            var data = RoleService.QueryRolesByPagings(new RoleCondition
             {
                 Name = "xxxx",
                 PageIndex = 1,

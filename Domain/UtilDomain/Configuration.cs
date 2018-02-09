@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration.Ini;
 using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.Configuration.Xml;
 
-namespace Domain
+namespace Domain.UtilDomain
 {
     /// <summary>
     /// 配置信息
