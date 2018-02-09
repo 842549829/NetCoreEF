@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.UIDomain;
+using Domain.UtilDomain;
 
 namespace Domain.DbDomain
 {
@@ -68,5 +70,46 @@ namespace Domain.DbDomain
         /// </summary>
         [Required]
         public bool IsAdministrator { get; set; }
+
+        /// <summary>
+        /// 公司信息
+        /// </summary>
+        [NotMapped]
+        public Company Company  { get; set; }
+
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="loginInfo">登录信息</param>
+        public void Login(LoginInfo loginInfo)
+        {
+            this.ValidateLogin(loginInfo.LoginPassword);
+
+
+        }
+
+        /// <summary>
+        /// 验证登录
+        /// </summary>
+        /// <param name="password">登录密码</param>
+        public void ValidateLogin(string password)
+        {
+            if (this.Id == Guid.Empty)
+            {
+                throw new Exception("帐号不存在");
+            }
+            if (this.Password != Md5.Encrypt32(password))
+            {
+                throw new Exception("帐号登录密码错误");
+            }
+        }
+
+        /// <summary>
+        /// 登录密码加密
+        /// </summary>
+        public void EncryptPassword()
+        {
+            this.Password = Md5.Encrypt32(this.Password);
+        }
     }
 }

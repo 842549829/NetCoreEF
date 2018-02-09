@@ -1,6 +1,7 @@
-﻿using System.Transactions;
-using Domain;
+﻿using System;
+using System.Transactions;
 using Domain.DbDomain;
+using Domain.UIDomain;
 using Repository;
 
 namespace Service
@@ -40,5 +41,46 @@ namespace Service
             }
         }
 
+        /// <summary>
+        /// 根据用户名查询员工
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <returns>结果</returns>
+        public static Employees QueryEmployeesByUserName(string userName)
+        {
+            using (BaseRepository repository = Factory.BaseRepositoryFactory())
+            {
+                return repository.LoadEntitie<Employees>(item => item.UserName == userName);
+            }
+        }
+
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="loginInfo">登录信息</param>
+        /// <returns>登录结果</returns>
+        public static ToKenUser Login(LoginInfo loginInfo)
+        {
+            ToKenUser result = new ToKenUser
+            {
+                Result = new Result
+                {
+                    IsSucceed = false
+                }
+            };
+            try
+            {
+                // 查询用户
+                Employees employees = QueryEmployeesByUserName(loginInfo.UserName);
+                // 查询公司
+                // 加载权限
+            }
+            catch (Exception ex)
+            {
+                result.Result.IsSucceed = false;
+                result.Result.Message = ex.Message;
+            }
+            return result;
+        }
     }
 }

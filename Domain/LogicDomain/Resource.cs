@@ -1,7 +1,7 @@
 ﻿using System;
 using Domain.DbDomain;
 
-namespace Domain
+namespace LogicDomain.Domain
 {
     /// <summary>
     /// 菜单资源
