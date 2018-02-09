@@ -1,5 +1,6 @@
-﻿using Domain.DbDomain;
-using Domain.LogicDomain;
+﻿using Domain;
+using Domain.BusinessDomain;
+using Domain.DbDomain;
 
 namespace Service
 {

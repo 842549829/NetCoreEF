@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Domain.UIDomain;
@@ -81,11 +82,11 @@ namespace Domain.DbDomain
         /// 用户登录
         /// </summary>
         /// <param name="loginInfo">登录信息</param>
-        public void Login(LoginInfo loginInfo)
+        public IEnumerable<Menu> Login(LoginInfo loginInfo)
         {
             this.ValidateLogin(loginInfo.LoginPassword);
 
-
+            return null;
         }
 
         /// <summary>

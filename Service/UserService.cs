@@ -61,24 +61,26 @@ namespace Service
         /// <returns>登录结果</returns>
         public static ToKenUser Login(LoginInfo loginInfo)
         {
-            ToKenUser result = new ToKenUser
-            {
-                Result = new Result
-                {
-                    IsSucceed = false
-                }
-            };
+            ToKenUser result = new ToKenUser();
             try
             {
-                // 查询用户
                 Employees employees = QueryEmployeesByUserName(loginInfo.UserName);
-                // 查询公司
-                // 加载权限
+                UserServiceExtension.EmployeesLoginNullValidate(employees);
+                var permissions = employees.Login(loginInfo);
+                result.Result = new Result
+                {
+                    IsSucceed = true
+                };
+                result.Employees = employees;
+                result.Menus = permissions;
             }
             catch (Exception ex)
             {
-                result.Result.IsSucceed = false;
-                result.Result.Message = ex.Message;
+                result.Result = new Result
+                {
+                    IsSucceed = false,
+                    Message = ex.Message
+                };
             }
             return result;
         }

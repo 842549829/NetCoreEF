@@ -1,8 +1,8 @@
 ﻿using System;
 using Domain;
 using Domain.DbDomain;
+using Domain.Service;
 using Domain.UIDomain;
-using Service;
 
 namespace ConsoleApp
 {
