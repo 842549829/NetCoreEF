@@ -52,7 +52,7 @@ namespace Service
         }
 
         /// <summary>
-        /// 查询
+        /// 查询角色
         /// </summary>
         /// <param name="id">id</param>
         /// <returns>结果</returns>
