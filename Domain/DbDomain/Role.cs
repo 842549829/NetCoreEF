@@ -46,6 +46,11 @@ namespace Domain.DbDomain
         public int CompanyLevel { get; set; }
 
         /// <summary>
+        /// 角色类型 {0:公司角色 ,1:员工角色}
+        /// </summary>
+        public int RoleType { get; set; }
+
+        /// <summary>
         /// 菜单
         /// </summary>
         private readonly List<Menu> m_menus = new List<Menu>();

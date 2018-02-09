@@ -12,7 +12,7 @@ namespace Repository
         /// <summary>
         /// The db context.
         /// </summary>
-        protected readonly DbContext dbContext;
+        public readonly DbContext dbContext;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseRepository"/> class.

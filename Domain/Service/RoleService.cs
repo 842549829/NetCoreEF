@@ -66,6 +66,49 @@ namespace Domain.Service
         }
 
         /// <summary>
+        /// 获取用户角色关系
+        /// </summary>
+        /// <param name="userId">用户Id</param>
+        /// <returns>用户角色关系</returns>
+        public static IEnumerable<UserPermissions> QueryUserPermissionsByUserId(Guid userId)
+        {
+            using (BaseRepository repository = Factory.BaseRepositoryFactory())
+            {
+                return repository.LoadEntities<UserPermissions>(item => item.UserId == userId);
+            }
+        }
+
+        /// <summary>
+        /// 获取角色菜单关系
+        /// </summary>
+        /// <param name="roleIds">用户Id</param>
+        /// <returns>角色菜单</returns>
+        public static IEnumerable<RolePermissions> QueryRolePermissionsByRoleId(IEnumerable<UserPermissions> roleIds)
+        {
+            using (BaseRepository repository = Factory.BaseRepositoryFactory())
+            {
+                var dbContextRolePermissions = repository.dbContext.Set<RolePermissions>();
+                IEnumerable<RolePermissions> rolePermissions = (from p in dbContextRolePermissions
+                    where (from f in roleIds select f.RoleId).Contains(p.RoleId)
+                    select p).ToList();
+                return rolePermissions;
+            }
+        }
+
+        /// <summary>
+        /// 获取角色菜单关系
+        /// </summary>
+        /// <param name="roleId">用户Id</param>
+        /// <returns>角色菜单</returns>
+        public static IEnumerable<RolePermissions> QueryRolePermissionsByRoleId(Guid roleId)
+        {
+            using (BaseRepository repository = Factory.BaseRepositoryFactory())
+            {
+                return repository.LoadEntities<RolePermissions>(item => item.RoleId == roleId);
+            }
+        }
+
+        /// <summary>
         /// 角色分页查询
         /// </summary>
         /// <param name="condition">查询条件</param>

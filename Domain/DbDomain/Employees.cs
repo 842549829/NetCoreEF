@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using Domain.BusinessDomain;
+using Domain.Service;
 using Domain.UIDomain;
 using Domain.UtilDomain;
 
@@ -84,16 +87,22 @@ namespace Domain.DbDomain
         /// <param name="loginInfo">登录信息</param>
         public IEnumerable<Menu> Login(LoginInfo loginInfo)
         {
-            this.ValidateLogin(loginInfo.LoginPassword);
-
-            return null;
+            this.ValidateLoginPassword(loginInfo.LoginPassword);
+            this.Company = CompanyService.QueryCompanyById(this.CompanyId);
+            this.ValidateLoginCompany();
+            var permissionCollection = PermissionService.QueryPermission(this);
+            if (permissionCollection?.Menus != null && permissionCollection.Menus.Any())
+            {
+                return permissionCollection.Menus;
+            }
+            throw new Exception("未加载到权限");
         }
 
         /// <summary>
-        /// 验证登录
+        /// 验证登录密码
         /// </summary>
         /// <param name="password">登录密码</param>
-        public void ValidateLogin(string password)
+        public void ValidateLoginPassword(string password)
         {
             if (this.Id == Guid.Empty)
             {
@@ -102,6 +111,18 @@ namespace Domain.DbDomain
             if (this.Password != Md5.Encrypt32(password))
             {
                 throw new Exception("帐号登录密码错误");
+            }
+        }
+
+        /// <summary>
+        /// 验证登录公司信息
+        /// </summary>
+        public void ValidateLoginCompany()
+        {
+            ObjectValidate.ObjectNullValidate(this.Company, "公司信息为空");
+            if (this.Company.Id == Guid.Empty)
+            {
+                throw new Exception("公司不存在");
             }
         }
 
