@@ -26,6 +26,10 @@ namespace Domain.Service
             if (role != null)
             {
                 // 加载用户菜单
+                var rolePermissions = RoleService.QueryRolePermissionsByRoleId(role);
+                var menu = MenuService.QueryMenuByRoleId(rolePermissions);
+                PermissionCollection permissionCollection = new PermissionCollection(menu);
+                return permissionCollection;
             }
 
             return null;
