@@ -56,6 +56,11 @@ namespace Domain.Data
         public DbSet<RolePermissions> RolePermissions { get; set; }
 
         /// <summary>
+        /// Sessions
+        /// </summary>
+        public DbSet<Sessions> Sessions { get; set; }
+
+        /// <summary>
         /// 注册
         /// </summary>
         /// <param name="modelBuilder">modelBuilder</param>

@@ -1,4 +1,6 @@
 ﻿{
   "ConnectionString": "Data Source=(local); Database=NotifyDb; User ID=sa; Password=sqlpass;",
-  "Logs": "D:/Logs"
+  "Logs": "D:/Logs",
+  "SessionSchemaName": "dbo",
+  "SessionTableName": "Sessions"
 }
